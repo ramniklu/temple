@@ -18,11 +18,11 @@ import { EmailModule } from './email/email.module';
     AuthModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
+      host: 'monorail.proxy.rlwy.net',
+      port: 33039,
       username: 'root',
-      password: '',
-      database: 'temple',
+      password: 'bHde521dEBcbFDbEF54fgfBhgG1D1af3',
+      database: 'railway',
       autoLoadEntities: true,
       synchronize: true,
       ...(process.env.NODE_ENV === 'prod'
