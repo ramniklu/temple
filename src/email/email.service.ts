@@ -7,23 +7,16 @@ import { CreateEmailTemplateDto } from './dto';
 
 @Injectable()
 export class EmailService {
-  private transporter: {
-    sendMail: (arg0: {
-      from: string; // Replace with your email address
-      to: any; subject: any; html: any; attachments: { path: string; }[];
-    }, arg1: (error: any, info: any) => void) => void;
-  };
+  private transporter;
 
   constructor(
     @InjectRepository(EmailTemplate) private readonly repository: Repository<EmailTemplate>,
   ) {
     this.transporter = nodemailer.createTransport({
-      host: 'mail.valleyhindutemple.org', // Replace with your hosting email server
-      port: 587, // Replace with the appropriate port for your hosting provider
-      secure: false, // Set to true if your hosting provider requires a secure connection
+      service: 'gmail',
       auth: {
-        user: 'support@valleyhindutemple.org', // Replace with your email address
-        pass: 'QGZ3K3yJ98WdrPR', // Replace with your email password
+        user: 'tiktok4828@gmail.com',
+        pass: 'rbsu drey oxnt ures',
       },
     });
   }
@@ -34,7 +27,7 @@ export class EmailService {
     return new Promise((resolve, reject) => {
       this.transporter.sendMail(
         {
-          from: 'support@valleyhindutemple.org', // Replace with your email address
+          from: 'absks865@gmail.com',
           to: dto.users,
           subject: dto.subject,
           html: dto.message,
@@ -49,7 +42,9 @@ export class EmailService {
         }
       );
     });
-  }
+}
+
+
 
   async listTemplate() {
     return await this.repository.find({
@@ -59,9 +54,9 @@ export class EmailService {
     });
   }
 
-  async findOneTemplate(id: number) {
+  async findOneTemplate(id:number) {
     return await this.repository.findOne({
-      where: { id },
-    });
+      where:{id}
+    })
   }
 }
