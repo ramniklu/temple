@@ -13,11 +13,12 @@ export class EmailService {
     @InjectRepository(EmailTemplate) private readonly repository: Repository<EmailTemplate>,
   ) {
     this.transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'mail.valleyhindutemple.org', // Replace with your hosting email server
+      port: 587, // Replace with the appropriate port for your hosting provider
+      secure: false, // Set to true if your hosting provider requires a secure connection
       auth: {
-        user: 'support@valleyhindutemple.org',
-        pass: 'QGZ3K3yJ98WdrPR',
-        
+        user: 'support@valleyhindutemple.org', // Replace with your email address
+        pass: 'QGZ3K3yJ98WdrPR', // Replace with your email password
       },
     });
   }
@@ -28,7 +29,7 @@ export class EmailService {
     return new Promise((resolve, reject) => {
       this.transporter.sendMail(
         {
-          from: 'support@valleyhindutemple.org',
+          from: 'support@valleyhindutemple.org', // Replace with your email address
           to: dto.users,
           subject: dto.subject,
           html: dto.message,
@@ -43,9 +44,7 @@ export class EmailService {
         }
       );
     });
-}
-
-
+  }
 
   async listTemplate() {
     return await this.repository.find({
@@ -55,9 +54,9 @@ export class EmailService {
     });
   }
 
-  async findOneTemplate(id:number) {
+  async findOneTemplate(id: number) {
     return await this.repository.findOne({
-      where:{id}
-    })
+      where: { id },
+    });
   }
 }
