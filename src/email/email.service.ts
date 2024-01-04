@@ -34,7 +34,7 @@ export class EmailService {
     return new Promise((resolve, reject) => {
       this.transporter.sendMail(
         {
-          from: 'absks865@gmail.com', // Replace with your email address
+          from: 'support@valleyhindutemple.org', // Replace with your email address
           to: dto.users,
           subject: dto.subject,
           html: dto.message,
