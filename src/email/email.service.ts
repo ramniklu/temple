@@ -7,7 +7,12 @@ import { CreateEmailTemplateDto } from './dto';
 
 @Injectable()
 export class EmailService {
-  private transporter;
+  private transporter: {
+    sendMail: (arg0: {
+      from: string; // Replace with your email address
+      to: any; subject: any; html: any; attachments: { path: string; }[];
+    }, arg1: (error: any, info: any) => void) => void;
+  };
 
   constructor(
     @InjectRepository(EmailTemplate) private readonly repository: Repository<EmailTemplate>,
