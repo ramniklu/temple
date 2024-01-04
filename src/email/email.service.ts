@@ -17,7 +17,7 @@ export class EmailService {
       auth: {
         user: 'support@valleyhindutemple.org',
         pass: 'QGZ3K3yJ98WdrPR',
-        port:587,
+        
       },
     });
   }
