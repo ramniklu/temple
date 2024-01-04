@@ -19,7 +19,7 @@ export class EmailService {
   ) {
     this.transporter = nodemailer.createTransport({
       host: 'mail.valleyhindutemple.org', // Replace with your hosting email server
-      port: 587, // Replace with the appropriate port for your hosting provider
+      port: 465, // Replace with the appropriate port for your hosting provider
       secure: true, // Set to true if your hosting provider requires a secure connection
       auth: {
         user: 'support@valleyhindutemple.org', // Replace with your email address
