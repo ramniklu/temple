@@ -15,8 +15,8 @@ export class EmailService {
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'tiktok4828@gmail.com',
-        pass: 'rbsu drey oxnt ures',
+        user: 'support@valleyhindutemple.org',
+        pass: 'QGZ3K3yj98WdrPR',
       },
     });
   }
@@ -27,7 +27,7 @@ export class EmailService {
     return new Promise((resolve, reject) => {
       this.transporter.sendMail(
         {
-          from: 'absks865@gmail.com',
+          from: 'support@valleyhindutemple.org',
           to: dto.users,
           subject: dto.subject,
           html: dto.message,
