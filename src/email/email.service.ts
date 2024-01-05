@@ -28,7 +28,7 @@ export class EmailService {
     return new Promise((resolve, reject) => {
       this.transporter.sendMail(
         {
-          from: 'support@valleyhindutemple.org',
+          from: 'valleyhindutemple@gmail.com',
           to: dto.users,
           subject: dto.subject,
           html: dto.message,
