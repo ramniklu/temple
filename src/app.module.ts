@@ -18,10 +18,10 @@ import { EmailModule } from './email/email.module';
     AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'roundhouse.proxy.rlwy.net',
-      port: 27735,
+      host: 'monorail.proxy.rlwy.net',
+      port: 42068,
       username: 'postgres',
-      password: 'D-3424A1Dgg*GG1F6CE3eaGD4Beg4E*D',
+      password: 'Dbf1FBEf*aEcC2eEAAG1BagadCg*-521',
       database: 'railway',
       autoLoadEntities: true,
       synchronize: true,
