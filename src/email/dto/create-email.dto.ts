@@ -8,5 +8,5 @@ export class CreateEmailTemplateDto {
     message: string;
 
     @IsOptional()
-    attachments: string[]; // Array of file paths for attachments
+    attachments?: string[]; // Array of file paths for attachments
 }
