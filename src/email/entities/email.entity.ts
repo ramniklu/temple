@@ -12,5 +12,5 @@ export class EmailTemplate extends BaseEntity {
   message: string;
 
   @Column('simple-array', { nullable: true })
-  attachments: string[]; // Array of file paths for attachments
+  attachments?: string[]; // Array of file paths for attachments
 }
