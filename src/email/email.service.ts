@@ -23,7 +23,7 @@ export class EmailService {
   }
 
   async sendBulkEmail(dto: any, attachments: Express.Multer.File[] = []): Promise<void> {
-    const attachmentsConfig = Array.isArray(attachments) ? attachments.map(file => ({ path: file.path })) : [];
+    const attachmentsConfig = Array.isArray(attachments) ? attachments.map(file => ({ filename: file.originalname, content: file.buffer })) : [];
 
     return new Promise((resolve, reject) => {
       this.transporter.sendMail(
