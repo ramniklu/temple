@@ -30,7 +30,7 @@ export class EmailService {
       this.transporter.sendMail(
         {
           from: 'valleyhindutemple@gmail.com',
-          to: users,
+          to,
           subject: dto.subject,
           html: dto.message,
           attachments: attachmentsConfig,
