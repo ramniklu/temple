@@ -3,15 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as nodemailer from 'nodemailer';
 import { EmailTemplate } from './entities';
 import { Repository } from 'typeorm';
-import { CreateEmailTemplateDto } from './dto';
+// import { createReadStream, ReadStream } from 'fs';
 
 @Injectable()
 export class EmailService {
   private transporter;
 
-  constructor(
-    @InjectRepository(EmailTemplate) private readonly repository: Repository<EmailTemplate>,
-  ) {
+  constructor(@InjectRepository(EmailTemplate) private readonly repository: Repository<EmailTemplate>) {
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -22,43 +20,17 @@ export class EmailService {
     });
   }
 
-  async sendBulkEmail(dto: any, attachments: Express.Multer.File[] = []): Promise<void> {
-    console.log('Attachments:', attachments);
-    const attachmentsConfig = Array.isArray(attachments) ? attachments.map(file => ({ filename: file.originalname, content: file.buffer })) : [];
+  async sendBulkEmail(dto: any): Promise<void> {
+ 
 
-    return new Promise((resolve, reject) => {
+    
       this.transporter.sendMail(
         {
           from: 'valleyhindutemple@gmail.com',
-          bcc:dto.users,
+          bcc: dto.users,
           subject: dto.subject,
           html: dto.message,
-          attachments: attachmentsConfig,
-        },
-        (error, info) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve();
-          }
-        }
-      );
-    });
-}
-
-
-
-  async listTemplate() {
-    return await this.repository.find({
-      order: {
-        createdAt: 'DESC',
-      },
-    });
-  }
-
-  async findOneTemplate(id:number) {
-    return await this.repository.findOne({
-      where:{id}
-    })
+          attachments:dto.attachments,
+          });
   }
 }
