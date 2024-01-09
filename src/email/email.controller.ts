@@ -59,10 +59,10 @@ export class EmailController {
   
 
 
-  // @Get('template/list')
-  // async listTemplate() {
-  //   return await this.emailService.listTemplate();
-  // }
+  @Get('template/list')
+  async listTemplate() {
+    return await this.emailService.listTemplate();
+  }
 
   // Other methods...
 }
