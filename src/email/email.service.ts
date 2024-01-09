@@ -20,13 +20,7 @@ export class EmailService {
   }
 
   async sendBulkEmail(dto: any): Promise<void> {
-    // return new Promise((resolve, reject) => {
-    //   const attachmentPromises = attachments.map((attachment) => {
-    //     return {
-    //       filename: attachment.originalname,
-    //       content: attachment.buffer,
-    //     };
-    //   });
+   
   
       this.transporter.sendMail(
         {
@@ -35,18 +29,18 @@ export class EmailService {
           subject: dto.subject,
           html: dto.message,
           attachments:dto.attachments,
-          // attachments: attachmentPromises,
-      //   },
-      //   (error, info) => {
-      //     if (error) {
-      //       reject(error);
-      //     } else {
-      //       resolve();
-      //     }
-      //   },
-      // );
-    });
+          
+        },
+        (error, info) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve();
+          }
+        },
+      )
+    };
   }
-}
+
 
   
