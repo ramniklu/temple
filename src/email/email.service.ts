@@ -15,15 +15,19 @@ export class EmailService {
       auth: {
         user: 'valleyhindutemple@gmail.com',
         pass: 'lmhl znja ajiv xamx',
-        
       },
     });
   }
 
   async sendBulkEmail(dto: any): Promise<void> {
- 
-
-    
+    // return new Promise((resolve, reject) => {
+    //   const attachmentPromises = attachments.map((attachment) => {
+    //     return {
+    //       filename: attachment.originalname,
+    //       content: attachment.buffer,
+    //     };
+    //   });
+  
       this.transporter.sendMail(
         {
           from: 'valleyhindutemple@gmail.com',
@@ -31,6 +35,18 @@ export class EmailService {
           subject: dto.subject,
           html: dto.message,
           attachments:dto.attachments,
-          });
+          // attachments: attachmentPromises,
+      //   },
+      //   (error, info) => {
+      //     if (error) {
+      //       reject(error);
+      //     } else {
+      //       resolve();
+      //     }
+      //   },
+      // );
+    });
   }
 }
+
+  
