@@ -44,8 +44,10 @@ export class UsersService {
 
   }
 
-  async findAllUsers() {
-    return await this.repository.find()
+   async findAllUsers() {
+    return await this.repository.find({
+      where:{role:Role.STUDENT}
+    })
 
   }
 
