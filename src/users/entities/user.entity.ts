@@ -10,7 +10,7 @@ export class User extends BaseEntity {
   @Column({ nullable: false })
   name: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   school: string;
 
   @Column({ nullable: true })
