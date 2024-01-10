@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto, UpdateUserDto } from './dto';
 
 import { User } from './entities'
+import { Role } from './enums';
 
 @Injectable()
 export class UsersService {
@@ -45,7 +46,17 @@ export class UsersService {
   }
 
   async findAllUsers() {
-    return await this.repository.find()
+    return await this.repository.find({
+      where:{role:Role.STUDENT}
+    })
+
+  }
+  async find(email: string) {
+    return await this.repository.find({
+      where:{role:Role.STUDENT,
+     email
+      }
+    })
 
   }
 
